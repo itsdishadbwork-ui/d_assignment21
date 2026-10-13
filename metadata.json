@@ -1,0 +1,6 @@
+{
+  "name": "PureSip - Guide to Self-Cleaning Bottles & Hydration",
+  "description": "An educational guide to self-cleaning water bottles, UV-C sanitization technology, bottle hygiene, and choosing the right reusable hydration gear.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
