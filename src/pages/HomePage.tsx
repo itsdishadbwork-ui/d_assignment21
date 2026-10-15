@@ -331,145 +331,66 @@ export function HomePage({ onNavigate, onOpenMatcher }: HomePageProps) {
           </div>
         </section>
 
-        {/* 5. Educational Guides Navigation Cards (Links to all 3 articles) */}
+        {/* 5. Educational Guides Navigation Cards (All 10 Articles) */}
         <section className="space-y-6">
-          <div>
-            <p className="text-xs font-semibold text-cyan-700 uppercase tracking-wider">Educational Library</p>
-            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 font-display tracking-tight mt-1">
-              Deep-Dive Guides & In-Depth Research
-            </h2>
-            <p className="text-sm text-slate-600 mt-1 max-w-xl">
-              Access comprehensive, peer-reviewed educational articles on sanitization mechanics, hygiene management, and buyer criteria.
-            </p>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div>
+              <p className="text-xs font-semibold text-cyan-700 uppercase tracking-wider">Educational Library</p>
+              <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 font-display tracking-tight mt-1">
+                Deep-Dive Guides & In-Depth Research (10 Articles)
+              </h2>
+              <p className="text-sm text-slate-600 mt-1 max-w-xl">
+                Access our complete collection of peer-reviewed educational articles on sanitization mechanics, hygiene management, and buyer criteria.
+              </p>
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            
-            {/* Card 1: Article 1 */}
-            <article className="bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col hover:border-cyan-300 transition-colors shadow-xs">
-              <div className="aspect-[4/3] bg-slate-100 overflow-hidden">
-                <img
-                  src={ARTICLES_CONFIG['how-self-cleaning-water-bottles-work'].image}
-                  alt={ARTICLES_CONFIG['how-self-cleaning-water-bottles-work'].imageAlt}
-                  className="w-full h-full object-cover hover:scale-102 transition-transform duration-300"
-                  loading="lazy"
-                  referrerPolicy="no-referrer"
-                />
-              </div>
-              <div className="p-6 flex flex-col flex-1 space-y-3">
-                <div className="flex items-center gap-2 text-xs text-slate-500">
-                  <span>Technology & Science</span>
-                  <span aria-hidden="true">·</span>
-                  <span>6 min read</span>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {Object.values(ARTICLES_CONFIG).map((article) => (
+              <article
+                key={article.slug}
+                className="bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col hover:border-cyan-300 transition-colors shadow-xs"
+              >
+                <div className="aspect-[4/3] bg-slate-100 overflow-hidden">
+                  <img
+                    src={article.image}
+                    alt={article.imageAlt}
+                    className="w-full h-full object-cover hover:scale-102 transition-transform duration-300"
+                    loading="lazy"
+                    referrerPolicy="no-referrer"
+                  />
                 </div>
-                <h3 className="text-lg font-bold text-slate-900 font-display leading-snug">
-                  <a
-                    href="/how-self-cleaning-water-bottles-work"
-                    onClick={(e) => handleLink(e, '/how-self-cleaning-water-bottles-work')}
-                    className="hover:text-cyan-700 transition-colors"
-                  >
-                    How Do Self-Cleaning Water Bottles Work?
-                  </a>
-                </h3>
-                <p className="text-xs text-slate-600 leading-relaxed flex-1">
-                  Examine the exact photobiological mechanisms of UV-C LED emitters, automated cycle timing, and manufacturer safety practices.
-                </p>
-                <div className="pt-2 border-t border-slate-100">
-                  <a
-                    href="/how-self-cleaning-water-bottles-work"
-                    onClick={(e) => handleLink(e, '/how-self-cleaning-water-bottles-work')}
-                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-cyan-700 hover:text-cyan-900 transition-colors"
-                  >
-                    <span>Read Technology Article</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </a>
+                <div className="p-6 flex flex-col flex-1 space-y-3">
+                  <div className="flex items-center gap-2 text-xs text-slate-500">
+                    <span className="font-medium text-cyan-800">{article.topic}</span>
+                    <span aria-hidden="true">·</span>
+                    <span>{article.readingTime}</span>
+                  </div>
+                  <h3 className="text-base sm:text-lg font-bold text-slate-900 font-display leading-snug">
+                    <a
+                      href={article.url}
+                      onClick={(e) => handleLink(e, article.url)}
+                      className="hover:text-cyan-700 transition-colors"
+                    >
+                      {article.title}
+                    </a>
+                  </h3>
+                  <p className="text-xs text-slate-600 leading-relaxed flex-1">
+                    {article.summary}
+                  </p>
+                  <div className="pt-2 border-t border-slate-100">
+                    <a
+                      href={article.url}
+                      onClick={(e) => handleLink(e, article.url)}
+                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-cyan-700 hover:text-cyan-900 transition-colors"
+                    >
+                      <span>Read Complete Guide</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </a>
+                  </div>
                 </div>
-              </div>
-            </article>
-
-            {/* Card 2: Article 2 */}
-            <article className="bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col hover:border-cyan-300 transition-colors shadow-xs">
-              <div className="aspect-[4/3] bg-slate-100 overflow-hidden">
-                <img
-                  src={ARTICLES_CONFIG['benefits-of-self-cleaning-water-bottles'].image}
-                  alt={ARTICLES_CONFIG['benefits-of-self-cleaning-water-bottles'].imageAlt}
-                  className="w-full h-full object-cover hover:scale-102 transition-transform duration-300"
-                  loading="lazy"
-                  referrerPolicy="no-referrer"
-                />
-              </div>
-              <div className="p-6 flex flex-col flex-1 space-y-3">
-                <div className="flex items-center gap-2 text-xs text-slate-500">
-                  <span>Hygiene & Lifestyle</span>
-                  <span aria-hidden="true">·</span>
-                  <span>6 min read</span>
-                </div>
-                <h3 className="text-lg font-bold text-slate-900 font-display leading-snug">
-                  <a
-                    href="/benefits-of-self-cleaning-water-bottles"
-                    onClick={(e) => handleLink(e, '/benefits-of-self-cleaning-water-bottles')}
-                    className="hover:text-cyan-700 transition-colors"
-                  >
-                    What Are the Benefits of Self-Cleaning Bottles?
-                  </a>
-                </h3>
-                <p className="text-xs text-slate-600 leading-relaxed flex-1">
-                  Understand why dark water containers smell bad, how active sanitization helps travellers, and why exaggerated claims must be rejected.
-                </p>
-                <div className="pt-2 border-t border-slate-100">
-                  <a
-                    href="/benefits-of-self-cleaning-water-bottles"
-                    onClick={(e) => handleLink(e, '/benefits-of-self-cleaning-water-bottles')}
-                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-cyan-700 hover:text-cyan-900 transition-colors"
-                  >
-                    <span>Read Benefits & Hygiene Guide</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </a>
-                </div>
-              </div>
-            </article>
-
-            {/* Card 3: Article 3 */}
-            <article className="bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col hover:border-cyan-300 transition-colors shadow-xs">
-              <div className="aspect-[4/3] bg-slate-100 overflow-hidden">
-                <img
-                  src={ARTICLES_CONFIG['how-to-choose-a-self-cleaning-water-bottle'].image}
-                  alt={ARTICLES_CONFIG['how-to-choose-a-self-cleaning-water-bottle'].imageAlt}
-                  className="w-full h-full object-cover hover:scale-102 transition-transform duration-300"
-                  loading="lazy"
-                  referrerPolicy="no-referrer"
-                />
-              </div>
-              <div className="p-6 flex flex-col flex-1 space-y-3">
-                <div className="flex items-center gap-2 text-xs text-slate-500">
-                  <span>Buyer Guide & Comparison</span>
-                  <span aria-hidden="true">·</span>
-                  <span>7 min read</span>
-                </div>
-                <h3 className="text-lg font-bold text-slate-900 font-display leading-snug">
-                  <a
-                    href="/how-to-choose-a-self-cleaning-water-bottle"
-                    onClick={(e) => handleLink(e, '/how-to-choose-a-self-cleaning-water-bottle')}
-                    className="hover:text-cyan-700 transition-colors"
-                  >
-                    How to Choose a Self-Cleaning Water Bottle
-                  </a>
-                </h3>
-                <p className="text-xs text-slate-600 leading-relaxed flex-1">
-                  Compare battery life, optical safety sensors, thermal insulation, and port waterproofing in a comprehensive buyer comparison table.
-                </p>
-                <div className="pt-2 border-t border-slate-100">
-                  <a
-                    href="/how-to-choose-a-self-cleaning-water-bottle"
-                    onClick={(e) => handleLink(e, '/how-to-choose-a-self-cleaning-water-bottle')}
-                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-cyan-700 hover:text-cyan-900 transition-colors"
-                  >
-                    <span>Read Buyer Guide & Matrix</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </a>
-                </div>
-              </div>
-            </article>
+              </article>
+            ))}
           </div>
         </section>
 
